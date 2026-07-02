@@ -11,7 +11,7 @@ from doc_writer import DocumentWriter
 
 st.set_page_config(
     page_title="Knifork AI",
-    page_icon="📚",
+    page_icon="📄",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -89,20 +89,20 @@ def progress_callback(message, percent=None):
 
 with st.sidebar:
 
-    st.title("📚 Knifork")
+    st.title("Knifork")
 
-    st.caption("AI Book & Report Generator")
+    st.caption("AI Documentation Engine")
 
     st.divider()
 
     api_key = st.text_input(
         "Groq API Key",
         type="password",
-        help="Paste your Groq API key",
+        help="Enter your Groq API credentials",
     )
 
     model = st.selectbox(
-        "Model",
+        "Model Endpoint",
         [
             "llama-3.1-8b-instant",
             "llama-3.3-70b-versatile",
@@ -111,27 +111,27 @@ with st.sidebar:
 
     st.divider()
 
-    st.subheader("Statistics")
+    st.subheader("System Specifications")
 
     st.metric(
-        "Status",
-        "Ready",
+        "Engine Status",
+        "Idle",
     )
 
     st.metric(
-        "Output",
+        "Output Protocol",
         "DOCX",
     )
 
     st.metric(
-        "Provider",
-        "Groq",
+        "Provider API",
+        "Groq Console",
     )
 
     st.divider()
 
     if st.button(
-        "🗑 Clear Logs",
+        "Clear Console Logs",
         use_container_width=True,
     ):
         st.session_state.logs = []
@@ -143,19 +143,12 @@ with st.sidebar:
 # MAIN HEADER
 # ----------------------------------------------------------
 
-st.title("📚 Knifork AI Report Generator")
+st.title("Knifork AI // Documentation Pipeline")
 
 st.markdown(
     """
-Generate professional:
-
-- 📚 Books
-- 📄 Reports
-- 🎓 Research Papers
-- 📊 Case Studies
-- 📖 Documentation
-
-using Groq AI.
+High-density document generation platform powered by Groq.
+Compiles complete books, structured reports, case studies, and research publications.
 """
 )
 
@@ -170,12 +163,12 @@ left, right = st.columns(2)
 with left:
 
     topic = st.text_input(
-        "📚 Topic",
-        placeholder="Example: Netflix Business Strategy",
+        "Document Topic",
+        placeholder="Example: Netflix Global Content Strategy",
     )
 
     pages = st.number_input(
-        "📄 Number of Pages",
+        "Target Page Count",
         min_value=5,
         max_value=500,
         value=50,
@@ -185,7 +178,7 @@ with left:
 with right:
 
     chapters = st.number_input(
-        "📑 Chapters (0 = Auto)",
+        "Chapter Count (0 = Auto)",
         min_value=0,
         max_value=50,
         value=0,
@@ -193,32 +186,25 @@ with right:
     )
 
     output_type = st.selectbox(
-        "📂 Output Format",
+        "Target File Format",
         [
             "DOCX",
         ],
     )
 
-st.markdown("### 📝 Additional Instructions")
+st.markdown("### Model Directives")
 
 description = st.text_area(
     "Additional Instructions",
     label_visibility="collapsed",
     height=140,
     placeholder="""
-Example:
-
-Write an academic report.
-
-Include real-world examples.
-
-Use professional language.
-
-Include headings and subheadings.
-
-Avoid repetition.
-
-Write in detailed style.
+Example directives:
+- Write in an academic, analytical style.
+- Include concrete real-world case studies.
+- Use precise professional terminology.
+- Establish clean hierarchical subsections.
+- Prevent textual repetition and filler content.
 """,
 )
 
@@ -229,7 +215,7 @@ st.divider()
 # ----------------------------------------------------------
 
 generate = st.button(
-    "🚀 Generate Report",
+    "Initialize Generation Pipeline",
     use_container_width=True,
 )
 
@@ -239,14 +225,14 @@ st.divider()
 # PROGRESS AREA
 # ----------------------------------------------------------
 
-st.subheader("Generation Progress")
+st.subheader("Pipeline Execution Status")
 
 progress_placeholder.progress(
     st.session_state.progress
 )
 
 status_placeholder.info(
-    "Waiting to start..."
+    "Awaiting system initialization..."
 )
 
 logs_placeholder.code(
@@ -282,7 +268,7 @@ if generate:
 
     progress_placeholder.progress(0)
 
-    status_placeholder.info("Initializing AI...")
+    status_placeholder.info("Initializing engine thread...")
 
     try:
 
@@ -307,7 +293,7 @@ if generate:
         progress_placeholder.progress(95)
 
         status_placeholder.success(
-            "Writing DOCX document..."
+            "Compiling document into DOCX format..."
         )
 
         output_file = writer.create_document(
@@ -320,10 +306,8 @@ if generate:
         progress_placeholder.progress(100)
 
         status_placeholder.success(
-            "Report Generated Successfully!"
+            "Document Compiled Successfully."
         )
-
-        st.balloons()
 
         # -----------------------------------------
         # Statistics
@@ -338,25 +322,25 @@ if generate:
 
         st.divider()
 
-        st.subheader("Generation Summary")
+        st.subheader("Compilation Summary")
 
         col1, col2, col3 = st.columns(3)
 
         with col1:
             st.metric(
-                "Words",
+                "Total Words",
                 f"{total_words:,}"
             )
 
         with col2:
             st.metric(
-                "Chapters",
+                "Chapters Written",
                 total_chapters
             )
 
         with col3:
             st.metric(
-                "Pages",
+                "Target Pages",
                 pages
             )
 
@@ -370,7 +354,7 @@ if generate:
 
             st.download_button(
 
-                label="📥 Download DOCX",
+                label="Download Generated Document (DOCX)",
 
                 data=file,
 
@@ -386,6 +370,6 @@ if generate:
 
         progress_placeholder.progress(0)
 
-        status_placeholder.error("Generation Failed")
+        status_placeholder.error("Generation Pipeline Failed")
 
         st.exception(e)

@@ -1,78 +1,161 @@
-/* ---------- Background ---------- */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ---------- Core Reset & Typo ---------- */
+html, body, [data-testid="stAppViewContainer"] {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif !important;
+    background-color: #060810 !important;
+    color: #f8fafc !important;
+}
 
 .stApp {
-
-    background: #0f172a;
-
+    background: radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.04) 0%, transparent 60%),
+                radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.04) 0%, transparent 60%) !important;
+    background-color: #060810 !important;
 }
 
-/* ---------- Headers ---------- */
-
-h1,
-h2,
-h3,
-h4 {
-
-    color: white;
-
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.02em !important;
 }
 
-/* ---------- Input Boxes ---------- */
-
-input {
-
-    border-radius: 12px !important;
-
-}
-
-/* ---------- Buttons ---------- */
-
-.stButton>button {
-
-    width: 100%;
-
-    border-radius: 15px;
-
-    height: 55px;
-
-    background: #2563eb;
-
-    color: white;
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-    border: none;
-
-}
-
-.stButton>button:hover {
-
-    background: #1d4ed8;
-
-}
-
-/* ---------- Progress ---------- */
-
-.stProgress>div>div>div {
-
-    background: #22c55e;
-
-}
-
-/* ---------- Code Box ---------- */
-
-pre {
-
-    border-radius: 15px;
-
+/* Gradient Titles */
+h1 {
+    background: linear-gradient(135deg, #06b6d4, #6366f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-bottom: 0.5rem;
 }
 
 /* ---------- Sidebar ---------- */
-
 section[data-testid="stSidebar"] {
+    background-color: #0a0d16 !important;
+    border-right: 1px solid rgba(99, 102, 241, 0.08) !important;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+}
 
-    background: #111827;
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1 {
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, #06b6d4, #6366f1) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
 
+/* ---------- Form Inputs & Controls ---------- */
+div[data-baseweb="input"], div[data-baseweb="textarea"], div[data-baseweb="select"] {
+    background-color: rgba(10, 14, 23, 0.8) !important;
+    border: 1px solid rgba(99, 102, 241, 0.15) !important;
+    border-radius: 10px !important;
+    transition: all 0.2s ease-in-out !important;
+    color: #f8fafc !important;
+}
+
+div[data-baseweb="input"]:focus-within, div[data-baseweb="textarea"]:focus-within, div[data-baseweb="select"]:focus-within {
+    border-color: #06b6d4 !important;
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.15) !important;
+}
+
+input, textarea {
+    color: #f8fafc !important;
+    font-size: 0.95rem !important;
+}
+
+label {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.8rem !important;
+    color: #94a3b8 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* ---------- Custom Buttons ---------- */
+.stButton>button {
+    width: 100% !important;
+    border-radius: 10px !important;
+    height: 50px !important;
+    background: linear-gradient(135deg, #06b6d4, #6366f1) !important;
+    color: #060810 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    border: none !important;
+    box-shadow: 0 8px 20px rgba(6, 182, 212, 0.15) !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+.stButton>button:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 12px 28px rgba(99, 102, 241, 0.3) !important;
+    color: #ffffff !important;
+}
+
+.stButton>button:active {
+    transform: translateY(1px) !important;
+}
+
+/* ---------- Metrics & Specs ---------- */
+div[data-testid="stMetricValue"] {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    color: #06b6d4 !important;
+}
+
+div[data-testid="stMetricLabel"] {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.75rem !important;
+    color: #64748b !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+/* ---------- Progress Indicator ---------- */
+.stProgress > div > div > div {
+    background: linear-gradient(90deg, #06b6d4, #6366f1) !important;
+    height: 6px !important;
+    border-radius: 9999px !important;
+}
+
+.stProgress {
+    height: 6px !important;
+}
+
+/* ---------- Log Console & Code ---------- */
+pre {
+    background-color: #03050a !important;
+    border: 1px solid rgba(99, 102, 241, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 1.25rem !important;
+}
+
+code {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.85rem !important;
+    color: #38bdf8 !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #060810;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #334155;
 }
