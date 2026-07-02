@@ -1,0 +1,78 @@
+/* ---------- Background ---------- */
+
+.stApp {
+
+    background: #0f172a;
+
+}
+
+/* ---------- Headers ---------- */
+
+h1,
+h2,
+h3,
+h4 {
+
+    color: white;
+
+}
+
+/* ---------- Input Boxes ---------- */
+
+input {
+
+    border-radius: 12px !important;
+
+}
+
+/* ---------- Buttons ---------- */
+
+.stButton>button {
+
+    width: 100%;
+
+    border-radius: 15px;
+
+    height: 55px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    border: none;
+
+}
+
+.stButton>button:hover {
+
+    background: #1d4ed8;
+
+}
+
+/* ---------- Progress ---------- */
+
+.stProgress>div>div>div {
+
+    background: #22c55e;
+
+}
+
+/* ---------- Code Box ---------- */
+
+pre {
+
+    border-radius: 15px;
+
+}
+
+/* ---------- Sidebar ---------- */
+
+section[data-testid="stSidebar"] {
+
+    background: #111827;
+
+}
