@@ -202,7 +202,8 @@ with right:
 st.markdown("### 📝 Additional Instructions")
 
 description = st.text_area(
-    "",
+    "Additional Instructions",
+    label_visibility="collapsed",
     height=140,
     placeholder="""
 Example:
